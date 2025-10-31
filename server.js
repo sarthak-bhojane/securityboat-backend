@@ -9,14 +9,30 @@ const { Pool } = require("pg");
 // ----- CONFIG -----
 const PORT = process.env.PORT || 4000;
 const JWT_SECRET = process.env.JWT_SECRET || "change_this_secret_in_prod";
+// const PG_CONFIG = {
+//   // change according to your local Postgres setup
+//   user: process.env.PGUSER || "postgres",
+//   host: process.env.PGHOST || "localhost",
+//   database: process.env.PGDATABASE || "product_dashboard",
+//   password: process.env.PGPASSWORD || "Sarthak@2002", // change
+//   port: process.env.PGPORT ? Number(process.env.PGPORT) : 5432,
+// };
+
+
+// Use Render-hosted PostgreSQL
 const PG_CONFIG = {
-  // change according to your local Postgres setup
-  user: process.env.PGUSER || "postgres",
-  host: process.env.PGHOST || "localhost",
+  user: process.env.PGUSER || "postgres_sarthak",
+  host: process.env.PGHOST || "dpg-d4290ejuibrs73cpopfg-a.oregon-postgres.render.com",
   database: process.env.PGDATABASE || "product_dashboard",
-  password: process.env.PGPASSWORD || "Sarthak@2002", // change
+  password: process.env.PGPASSWORD || "lipsaXx1jA5VoN2M3zpcRS41irEpkftz",
   port: process.env.PGPORT ? Number(process.env.PGPORT) : 5432,
+  ssl: {
+    rejectUnauthorized: false, // ✅ important for Render connection
+  },
 };
+
+
+
 // External GraphQL API (public)
 const EXTERNAL_GRAPHQL = "https://graphqlzero.almansi.me/api";
 
